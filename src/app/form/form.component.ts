@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {FormService} from "./form.service";
 
 @Component({
@@ -22,16 +22,11 @@ export class FormComponent {
   }
 
   onSubmit() {
-    const jsonData = this.myForm.get('jsonData').value;
-
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = () => {
         const fileData = reader.result as string;
-        console.log('Uploaded File:', fileData);
-        const isValid = this.FormService.verifyIAMPolicy(fileData);
-        console.log('Is valid IAM policy:', isValid);
-        this.answer = isValid;
+        this.answer = this.FormService.verifyIAMPolicy(fileData);
       };
       reader.readAsText(this.selectedFile);
     }
@@ -39,6 +34,5 @@ export class FormComponent {
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
-    event.target.value = '';
   }
 }
