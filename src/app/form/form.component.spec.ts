@@ -13,7 +13,7 @@ describe('FormService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return true if the JSON input is valid', () => {
+  it('should return true if the JSON input does not contains single *', () => {
     const validJson = `{
     "PolicyName": "root",
     "PolicyDocument": {
@@ -35,7 +35,7 @@ describe('FormService', () => {
     expect(service.verifyIAMPolicy(validJson)).toBeTrue();
   });
 
-  it('should return false if the JSON input is invalid', () => {
+  it('should return false if the JSON contains single *', () => {
     const invalidJson = `{
     "PolicyName": "root",
     "PolicyDocument": {
