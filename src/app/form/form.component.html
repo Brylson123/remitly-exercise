@@ -1,6 +1,6 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <h2>Upload your json file to check</h2>
-  <input type="file" (change)="onFileSelected($event)">
+  <h2>Upload your JSON file to check</h2>
+  <input type="file" (change)="onFileSelected($event)" formControlName="jsonData">
   <button type="submit">Submit</button>
 </form>
-<h1>Resource field in the JSON file does not contain a single asterisk: {{answer}}</h1>
+<h1>Resource field in the JSON file does not contain a single asterisk: <span [ngStyle]="{'color': answer ? 'green' : 'red'}">{{answer}}</span></h1>
