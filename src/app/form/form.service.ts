@@ -1,5 +1,20 @@
 import {Injectable} from '@angular/core';
+interface Statement {
+  Sid: string;
+  Effect: string;
+  Action: string[];
+  Resource: string | string[];
+}
 
+interface PolicyDocument {
+  Version: string;
+  Statement: Statement[];
+}
+
+interface IAMPolicy {
+  PolicyName: string;
+  PolicyDocument: PolicyDocument;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +24,7 @@ export class FormService {
   }
 
   verifyIAMPolicy(inputJson: string): boolean {
-    let jsonData: any;
+    let jsonData: IAMPolicy;
 
     try {
       jsonData = JSON.parse(inputJson);
