@@ -2,7 +2,7 @@
 https://remitly-exercise.vercel.app/
 
 ## Tech Stack
-Angular, Typescript, Jasmine
+Angular, TypeScript, Jasmine
 
 ## How to run the application locally:
     1. Clone the repository by running: git clone https://github.com/Brylson123/remitly-exercise.git
